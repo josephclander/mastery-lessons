@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # asked to update this to work with dot notation
 # confused as it just does!? no update required
 

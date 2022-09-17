@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # random dice program
 
 # my original code was

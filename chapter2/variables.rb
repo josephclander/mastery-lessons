@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ONE = 1
 TWO = 2
 THREE = 3
