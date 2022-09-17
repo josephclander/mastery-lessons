@@ -15,12 +15,16 @@ end
 
 winner = nil
 while winner.nil?
-  player1 = random_number
-  player2 = random_number
+  dice1a = random_number
+  dice1b = random_number
+  dice2a = random_number
+  dice2b = random_number
+  player1 = dice1a + dice1b
+  player2 = dice2a + dice2b
   if player1 > player2
     winner = 'player 1'
   elsif player1 < player2
     winner = 'player 2'
   end
 end
-puts "P1:#{player1} P2:#{player2} -> WINNER IS #{winner.upcase}"
+puts "P1: #{dice1a} + #{dice1b} = #{player1}\nP2: #{dice2a} + #{dice2b} = #{player2}\n-> WINNER IS #{winner.upcase}"
