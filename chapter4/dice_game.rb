@@ -13,18 +13,40 @@ def random_number
   rand(1..6)
 end
 
-winner = nil
-while winner.nil?
-  dice1a = random_number
-  dice1b = random_number
-  dice2a = random_number
-  dice2b = random_number
-  player1 = dice1a + dice1b
-  player2 = dice2a + dice2b
-  if player1 > player2
-    winner = 'player 1'
-  elsif player1 < player2
-    winner = 'player 2'
+def round
+  game_over = false
+  winner = nil
+
+  until game_over
+    player_1_dice = (1..2).map { random_number }
+    player_2_dice = (1..2).map { random_number }
+    player_1_score = player_1_dice.sum
+    player_2_score = player_2_dice.sum
+
+    if player_1_score > player_2_score
+      game_over = true
+      winner = 1
+    elsif player_1_score < player_2_score
+      game_over = true
+      winner = 2
+    end
   end
+  winner
 end
-puts "P1: #{dice1a} + #{dice1b} = #{player1}\nP2: #{dice2a} + #{dice2b} = #{player2}\n-> WINNER IS #{winner.upcase}"
+
+def game
+  scores = {
+    'Player 1' => 0,
+    'Player 2' => 0
+  }
+  overall_winner = nil
+  while overall_winner.nil?
+    game_winner = round
+    scores['Player 1'] += 1 if game_winner == 1
+    scores['Player 2'] += 1 if game_winner == 2
+    overall_winner = scores.max_by { |_player, rounds| rounds }[0] if scores.values.max == 2
+  end
+  "#{overall_winner} is the winner!"
+end
+
+puts game
